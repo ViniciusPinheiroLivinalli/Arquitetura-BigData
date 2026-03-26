@@ -1,0 +1,17 @@
+accessed_date,duration_(secs),network_protocol,ip,bytes,accessed_Ffom,age,gender,country,membership,language,sales,returned,returned_amount,pay_method
+2017-03-14 17:43:57.172,2533,TCP  ,1.10.195.126,20100,Chrome,28,Female,CA,Normal,English,261.96,No,0.0,Credit Card
+2017-03-14 17:43:57.172,4034,TCP  ,1.1.217.211,20500,Mozilla Firefox,21,Male,AR,Normal,English,731.94,No,0.0,Debit Card
+2017-03-14 17:43:26.135,1525,TCP  ,1.115.198.107,90100,Mozilla Firefox,20,Male,PL,Normal,English,14.62,No,0.0,Cash
+2017-03-14 17:43:26.135,4572,TCP  ,1.121.152.143,100300,Mozilla Firefox,66,Female,IN,Normal,Spanish,957.5775,No,0.0,Credit Card
+2017-03-14 18:17:09.005,3652,TCP  ,1.123.135.213,270200,Mozilla Firefox,53,Female,KR,Normal,Spanish,22.368,No,0.0,Cash
+2017-03-14 18:17:09.005,3847,TCP  ,1.124.48.210,10200,Mozilla Firefox,28,Female,CA,Normal,English,48.86,No,0.0,Credit Card
+2017-03-14 19:46:37.327,2090,TCP  ,1.124.48.99,310900,Mozilla Firefox,49,Female,CN,Normal,English,0.0,Yes,957.5775,Cash
+2017-03-14 19:46:37.327,2793,TCP  ,1.126.48.118,10700,Mozilla Firefox,32,Female,AT,Normal,English,907.152,No,0.0,Credit Card
+2017-03-14 19:02:42.704,3396,TCP  ,1.126.48.171,250200,Mozilla Firefox,69,Male,US,Normal,Spanish,18.504,No,0.0,Others
+2017-03-14 19:02:42.704,2064,TCP  ,1.126.48.47,20600,Mozilla Firefox,60,Female,CA,Normal,Spanish,114.9,No,0.0,Credit Card
+2017-03-14 20:17:17.014,3288,TCP  ,1.128.96.235,520500,Mozilla Firefox,36,Female,SE,Normal,English,1706.184,No,0.0,Cash
+2017-03-14 20:17:17.014,2973,TCP  ,1.128.96.30,30500,Android App,29,Female,CH,Normal,Chinese,911.424,No,0.0,Credit Card
+2017-03-14 17:44:10.042,4464,TCP  ,1.128.97.122,640800,Chrome,67,Female,IN,Normal,Spanish,15.552,No,0.0,Debit Card
+2017-03-14 17:44:10.042,2307,ICMP ,1.129.96.120,90800,Chrome,25,Male,IN,Normal,Spanish,407.976,No,0.0,Cash
+2017-03-14 17:43:39.011,2440,TCP  ,1.129.96.21,330000,Chrome,67,Female,US,Normal,Spanish,68.81,No,0.0,Credit Card
+2017-03-14 17:43:39.011,4716,TCP  ,1.129.96.252,50800,Chrome,24,Male,NO,Normal,English,2.544,No,0.0,Credit Card

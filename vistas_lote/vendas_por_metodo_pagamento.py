@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 import os
 
-pasta_raiz = Path(r"C:\Users\vinil\Documentos\GitHub\Arquitetura-BigData") # Altere para o caminho correto do seu projeto
+pasta_raiz = Path(r"C:\Users\vinil\Documents\GitHub\BigData") # Altere para o caminho correto do seu projeto
 pasta_dados = pasta_raiz / "dados_brutos"
 
 dataframes = []

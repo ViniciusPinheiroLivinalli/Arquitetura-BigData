@@ -11,7 +11,7 @@ df["ano"] = df["accessed_date"].dt.year
 df["mes"] = df["accessed_date"].dt.month
 df["dia"] = df["accessed_date"].dt.day
 
-pasta_raiz = Path(r"C:\Users\vinil\Documentos\GitHub\Arquitetura-BigData")
+pasta_raiz = Path(r"C:\Users\vinil\Documents\GitHub\BigData")
 
 for (ano, mes, dia), grupo in df.groupby(["ano", "mes", "dia"]):
     pasta_particao = pasta_raiz / "dados_brutos" / str(ano) / f"{mes:02d}" / f"{dia:02d}"
