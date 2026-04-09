@@ -1,27 +1,23 @@
 import pandas as pd
 from pathlib import Path
 import os
+from collections import defaultdict
 
-pasta_raiz = Path(r"C:\Users\vinil\Documents\GitHub\BigData") # Altere para o caminho correto do seu projeto
+pasta_raiz = Path(__file__).parent.parent  # Caminho para a raiz do projeto
 pasta_dados = pasta_raiz / "dados_brutos"
 
-dataframes = []
+# Usar um dicionário para acumular totais por país
+totais_por_pais = defaultdict(int)
 
 for arquivo in pasta_dados.rglob("dados.csv"):  # rglob busca recursivamente
     df = pd.read_csv(arquivo, low_memory=False)
-    dataframes.append(df)
+    # Agrupar e somar diretamente no dicionário
+    for country, group in df.groupby("country"):
+        totais_por_pais[country] += len(group)
 
-df_total = pd.concat(dataframes, ignore_index=True)
-df_total["accessed_date"] = pd.to_datetime(df_total["accessed_date"])
-
-##
-
-vista = df_total.groupby("country")["accessed_date"].agg(
-    total_acessos="count",
-).reset_index() 
-
-##
+# Criar DataFrame final a partir do dicionário
+vista_final = pd.DataFrame(list(totais_por_pais.items()), columns=["country", "total_acessos"])
 
 pasta_saida = pasta_raiz / "vistas_lote"
 os.makedirs(pasta_saida, exist_ok=True)
-vista.to_csv(pasta_saida / "acessos_por_pais.csv", index=False)
+vista_final.to_csv(pasta_saida / "acessos_por_pais.csv", index=False)
