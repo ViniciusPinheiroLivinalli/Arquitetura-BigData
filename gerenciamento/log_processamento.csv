@@ -1,9 +1,13 @@
 arquivo,timestamp,qnt_linhas,status
-C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\14\dados.csv,2026-03-26 09:17:45.414346,16,Processado
-C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\15\dados.csv,2026-03-26 09:17:45.520481,20508,Processado
-C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\16\dados.csv,2026-03-26 09:17:45.636697,24595,Processado
-C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\17\dados.csv,2026-03-26 09:17:45.735620,20572,Processado
-C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\18\dados.csv,2026-03-26 09:17:45.917858,31590,Processado
-C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\19\dados.csv,2026-03-26 09:17:46.030681,17560,Processado
-C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\20\dados.csv,2026-03-26 09:17:46.155554,31440,Processado
-C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\21\dados.csv,2026-03-26 09:17:46.248474,26557,Processado
+C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\14\dados.csv,2026-04-12 14:17:52.590551,16,Processado
+C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\15\dados.csv,2026-04-12 14:17:52.671119,20508,Processado
+C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\16\dados.csv,2026-04-12 14:17:52.762994,24595,Processado
+C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\17\dados.csv,2026-04-12 14:17:52.839809,20572,Processado
+C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\18\dados.csv,2026-04-12 14:17:52.966076,31590,Processado
+C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\19\dados.csv,2026-04-12 14:17:53.034738,17560,Processado
+C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\20\dados.csv,2026-04-12 14:17:53.123503,31440,Processado
+C:\Users\vinil\Documents\GitHub\BigData\dados_brutos\2017\03\21\dados.csv,2026-04-12 14:17:53.199696,26557,Processado
+C:\Users\vinil\Documents\GitHub\BigData\vistas_lote\acessos_por_pais.csv,2026-04-12 14:18:12.902273,27,Processado
+C:\Users\vinil\Documents\GitHub\BigData\vistas_lote\duracao_media_por_browser.csv,2026-04-12 14:18:18.012602,8,Processado
+C:\Users\vinil\Documents\GitHub\BigData\vistas_lote\vendas_por_dia.csv,2026-04-12 14:18:21.414815,8,Processado
+C:\Users\vinil\Documents\GitHub\BigData\vistas_lote\vendas_por_metodo_pagamento.csv,2026-04-12 14:18:24.447170,4,Processado
