@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from pathlib import Path
+from pathlib import Path # Importa a classe Path do módulo pathlib para manipulação de caminhos de arquivos e diretórios.
 
 caminho_csv = Path("E-commerce Website Logs.csv")
 df = pd.read_csv(caminho_csv, low_memory=False)
