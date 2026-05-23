@@ -7,7 +7,7 @@ pasta_raiz = Path(r"C:\Users\vinil\Documents\GitHub\BigData")
 pasta_vtr = pasta_raiz / "vistas_tempo_real"
 arquivo_fluxo = pasta_raiz / "dados_novos" / "fluxo.log"
 
-finaliza_laco = False
+finaliza_laco = False # Controle para finalizar o laço de leitura do arquivo de fluxo
 
 # Acumuladores
 vendas_por_dia = {}
@@ -16,18 +16,18 @@ vendas_por_metodo = {}
 duracao_por_browser = {}
 
 def processar_linha(linha):
-    campos = linha.split(",")
+    campos = linha.split(",") # Supondo que os campos estejam separados por vírgula, ajuste conforme necessário
     
-    data = campos[0][:10]
-    duracao = float(campos[1])
+    data = campos[0][:10] # uso o [0] para pegar a data completa e o [:10] para extrair apenas a parte da data (YYYY-MM-DD)
+    duracao = float(campos[1]) 
     browser = campos[5]
     pais = campos[8]
-    sales = float(campos[11])
+    sales = float(campos[11]) 
     metodo = campos[14]
 
-    if pais in acessos_por_pais:
+    if pais in acessos_por_pais: # Se o país já existe no dicionário, incrementa o contador
         acessos_por_pais[pais] += 1
-    else:
+    else: # Se o país não existe, inicializa o contador com 1
         acessos_por_pais[pais] = 1  
 
     if data in vendas_por_dia:
@@ -35,8 +35,7 @@ def processar_linha(linha):
         vendas_por_dia[data]["contagem"] += 1
     else:
         vendas_por_dia[data] = {"total": sales, "contagem": 1}
-
-    # ✅ CORRIGIDO: vendas_por_metodo agora guarda total e contagem
+    
     if metodo in vendas_por_metodo:
         vendas_por_metodo[metodo]["total"] += sales
         vendas_por_metodo[metodo]["contagem"] += 1
@@ -49,7 +48,7 @@ def processar_linha(linha):
     else:
         duracao_por_browser[browser] = {"soma": duracao, "contagem": 1}
 
-def salvar_vistas():
+def salvar_vistas(): 
     # Acessos por país
     with open(pasta_vtr / "acessos_por_pais.csv", "w", newline="") as f:
         writer = csv.writer(f)
@@ -79,16 +78,16 @@ def salvar_vistas():
             duracao_media = dados["soma"] / dados["contagem"]
             writer.writerow([browser, duracao_media])
 
-def stream_dados(arquivo):
+def stream_dados(arquivo): # esperando por novas linhas se chegar ao final do arquivo
     with open(arquivo, "r") as arq:
-        while not finaliza_laco:
+        while not finaliza_laco: # Enquanto o laço não for finalizado, continua lendo o arquivo
             linha = arq.readline().strip()
             if not linha:
                 time.sleep(1)
                 continue
-            yield linha
+            yield linha # Retorna a linha lida para o loop que chama a função
 
-def monitora_linhas(arquivo):
+def monitora_linhas(arquivo): # processa cada nova linha e salva as vistas atualizadas
     print("inicializando monitoramento")
     for nova_linha in stream_dados(arquivo):
         print(f"processando nova linha:\n\t{nova_linha}")
