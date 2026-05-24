@@ -1,3 +1,5 @@
+# Substituído por spark_camada_velocidade.py
+
 import threading
 import time
 import csv

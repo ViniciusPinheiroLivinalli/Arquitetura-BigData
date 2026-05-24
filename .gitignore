@@ -1,0 +1,15 @@
+# Arquivos gerados pelo Spark — não versionar
+dados_novos/checkpoint/
+dados_novos/micro_lotes/
+vistas_lote_spark/
+vistas_velocidade_spark/
+vistas_tempo_real/
+
+# Logs e cache do Spark
+derby.log
+metastore_db/
+__pycache__/
+*.pyc
+
+# Dados brutos grandes (opcional — depende se quer versionar)
+# E-commerce Website Logs.csv

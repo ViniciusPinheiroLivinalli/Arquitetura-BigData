@@ -1,3 +1,5 @@
+# Substituido por spark_camada_lote.py
+
 import pandas as pd
 from pathlib import Path
 import os

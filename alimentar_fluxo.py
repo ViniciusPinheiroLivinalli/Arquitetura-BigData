@@ -1,3 +1,5 @@
+# substituido por gerar_micro_lotes.py
+
 import time
 from pathlib import Path
 

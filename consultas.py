@@ -1,3 +1,5 @@
+# Substituído por spark_camada_apresentacao.py
+
 import pandas as pd
 from pathlib import Path
 
@@ -75,6 +77,8 @@ combinado_duracao = pd.merge(
     how="outer",
     suffixes=("_lote", "_vtr")
 )
+
+media_dur
 
 def combinar_media(row):
     lote = row.get("media_duracao_lote")
