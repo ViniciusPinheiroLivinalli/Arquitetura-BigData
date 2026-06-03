@@ -43,9 +43,7 @@ df_stream = spark.readStream \
     .schema(schema) \
     .csv(pasta_micro_lotes)
 
-# ============================================================
 # VISTAS DE TEMPO REAL
-# ============================================================
 
 # Vista 1 — Acessos por país
 acessos_pais = df_stream \
@@ -77,9 +75,8 @@ duracao_browser = df_stream \
         F.count("duration_(secs)").alias("contagem")
     )
 
-# ============================================================
-# SAÍDA — modo complete reescreve o resultado acumulado a cada micro-lote
-# ============================================================
+# SAÍDA - modo complete reescreve o resultado acumulado a cada micro-lote
+# Para cada vista, salvo o resultado completo em CSV, simulando uma camada de apresentação
 def iniciar_query(df, nome):
     pasta = f"{pasta_saida}/{nome}"
     os.makedirs(pasta, exist_ok=True)

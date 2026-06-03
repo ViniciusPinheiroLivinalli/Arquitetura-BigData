@@ -2,14 +2,11 @@ from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pathlib import Path
 
-# ============================================================
-# CONFIGURAÇÃO
-# ============================================================
 pasta_raiz = "C:/Users/vinil/Documents/GitHub/BigData"
 pasta_dados = f"{pasta_raiz}/dados_brutos/**/*.csv"
 pasta_saida = f"{pasta_raiz}/vistas_lote_spark"
 
-# Cria a SparkSession — ponto de entrada de qualquer aplicação PySpark
+# Cria a SparkSession
 spark = SparkSession.builder \
     .appName("CamadaLote") \
     .getOrCreate()
@@ -17,11 +14,10 @@ spark = SparkSession.builder \
 # Reduz logs desnecessários no terminal
 spark.sparkContext.setLogLevel("ERROR")
 
-# ============================================================
 # LEITURA DOS DADOS PARTICIONADOS
 # O Spark lê recursivamente toda a pasta dados_brutos/
 # inferSchema detecta automaticamente os tipos de cada coluna
-# ============================================================
+# leitura recursiva pois os arquivos estão em subpastas por data
 df = spark.read \
     .option("header", "true") \
     .option("inferSchema", "true") \
@@ -35,16 +31,14 @@ df = df.withColumn("accessed_date", F.to_timestamp("accessed_date"))
 print(f"Total de registros carregados: {df.count()}")
 df.show(5)
 
-# ============================================================
 # VISTA 1 — VENDAS POR DIA
-# Extrai só a data (sem hora) e agrega soma e média de sales
-# ============================================================
+# Extrai só a data (sem hora) e agrega soma e média de sales por dia
 vendas_por_dia = df \
     .withColumn("data", F.to_date("accessed_date")) \
     .groupBy("data") \
     .agg(
         F.sum("sales").alias("total_vendas"),
-        F.avg("sales").alias("media_vendas")
+        F.count("sales").alias("contagem")
     ) \
     .orderBy("data")
 
@@ -54,10 +48,8 @@ vendas_por_dia.coalesce(1).write \
     .option("header", "true") \
     .csv(f"{pasta_saida}/vendas_por_dia")
 
-# ============================================================
 # VISTA 2 — ACESSOS POR PAÍS
 # Conta o número de acessos por país de origem
-# ============================================================
 acessos_por_pais = df \
     .groupBy("country") \
     .agg(F.count("ip").alias("total_acessos")) \
@@ -69,14 +61,15 @@ acessos_por_pais.coalesce(1).write \
     .option("header", "true") \
     .csv(f"{pasta_saida}/acessos_por_pais")
 
-# ============================================================
 # VISTA 3 — DURAÇÃO MÉDIA POR BROWSER
-# Calcula a média de duração de sessão por browser
-# ============================================================
+# spark_camada_lote.py — corrigir para salvar os componentes
 duracao_por_browser = df \
     .groupBy("accessed_Ffom") \
-    .agg(F.avg("duration_(secs)").alias("media_duracao")) \
-    .orderBy(F.desc("media_duracao"))
+    .agg(
+        F.sum("duration_(secs)").alias("soma_duracao"),
+        F.count("duration_(secs)").alias("contagem")
+    ) \
+    .orderBy(F.desc("soma_duracao"))
 
 duracao_por_browser.show()
 duracao_por_browser.coalesce(1).write \
@@ -84,10 +77,8 @@ duracao_por_browser.coalesce(1).write \
     .option("header", "true") \
     .csv(f"{pasta_saida}/duracao_por_browser")
 
-# ============================================================
 # VISTA 4 — VENDAS POR MÉTODO DE PAGAMENTO
 # Soma total e contagem de vendas por método
-# ============================================================
 vendas_por_metodo = df \
     .groupBy("pay_method") \
     .agg(
